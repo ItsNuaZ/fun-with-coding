@@ -1,0 +1,13 @@
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+td:nth-child(1) {
+  background-color: orange;
+}
+
+td:nth-child(2) {
+  background-color: peachpuff;
+}
