@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function() {
     function getRandom(min, max) {
         return Math.random() * (max - min) + min;
     }
@@ -11,7 +11,7 @@ $(document).ready(function(){
         return `rgb(${r}, ${g}, ${b})`;
     }
 
-    $(".button").click(function(){
+    $(".button").click(function() {
         $("body").css("background", randomizeRGB());
     })
 });
