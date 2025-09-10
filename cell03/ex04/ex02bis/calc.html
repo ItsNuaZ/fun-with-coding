@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <form id="calculator">
+            <label for="left-member">Left member:</label>
+            <input type="text" id="left-member" name="left-member">
+            <br>
+            <br>
+
+            <label for="operators">Choose an operator:</label>
+            <select name="operators" id="operators">
+                <option value="add">+</option>
+                <option value="subtract">-</option>
+                <option value="multiply">*</option>
+                <option value="divide">/</option>
+                <option value="mod">%</option>
+            </select>
+            <br>
+            <br>
+
+            <label for="right-member">Right member:</label>
+            <input type="text" id="right-member" name="right-member">
+            <br>
+            <br>
+
+            <input type="submit" value="Try me!">
+        </form>
+
+        <script>
+            function isFloat(n) {
+                return n % 1 !== 0;
+            }
+
+            $(document).ready(function() {
+                alert("Please, use me...");
+                setInterval(function () {
+                    alert("Please, use me...");
+                }, 30 * 1000);
+            });
+
+            $("#calculator").on("submit", function(event) {
+                event.preventDefault();
+
+                const left = parseFloat($("#left-member").val());
+                const operator = $("#operators").val();
+                const right = parseFloat($("#right-member").val());
+
+                if ((left < 0 || right < 0) || (isFloat(left) || isFloat(right))) {
+                    return alert("Error :(");
+                }
+
+                if (right === 0 && (operator == "divide" || operator == "mod")) {
+                    console.log("It's over 9000!");
+                    return alert("It's over 9000!");
+                }
+
+                let result;
+                switch (operator) {
+                    case "add":
+                        result = left + right;
+                        break;
+                    case "subtract":
+                        result = left - right;
+                        break;
+                    case "multiply":
+                        result = left * right;
+                        break;
+                    case "divide":
+                        result = left / right;
+                        break;
+                    case "mod":
+                        result = left % right;
+                        break;
+                }
+
+                console.log(`Result: ${result}`);
+                alert(`Result: ${result}`);
+            });
+        </script>
+    </body>
+</html>
