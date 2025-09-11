@@ -36,7 +36,6 @@ function saveTasks() {
 }
 
 function loadTasks() {
-    console.log("1");
     const data = localStorage.getItem("todo_list");
     if (data) {
         const tasks = JSON.parse(data);
@@ -44,9 +43,7 @@ function loadTasks() {
         tasks.forEach(task => {
             createTaskElement(task);
         });
-        console.log("2");
     }
-    console.log("3");
 }
 
 $(document).ready(function() {
