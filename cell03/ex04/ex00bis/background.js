@@ -13,5 +13,5 @@ $(document).ready(function() {
 
     $(".button").click(function() {
         $("body").css("background", randomizeRGB());
-    })
+    });
 });

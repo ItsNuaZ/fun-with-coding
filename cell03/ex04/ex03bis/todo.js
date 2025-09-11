@@ -54,5 +54,5 @@ $(document).ready(function() {
 
     $("#new-task-btn").click(function() {
         newTask();
-    })
+    });
 });
