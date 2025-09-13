@@ -39,7 +39,7 @@ function saveTasks() {
 }
 
 function loadTasks() {
-    const data = getCookie("todo_list");
+    let data = getCookie("todo_list");
     if (data !== "") {
         const tasks = JSON.parse(data);
         tasks.reverse();
