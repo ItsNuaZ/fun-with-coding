@@ -35,16 +35,39 @@ function saveTasks() {
         tasks.push(list[i].textContent);
     }
 
-    localStorage.setItem("todo_list", JSON.stringify(tasks));
+    setCookie("todo_list", JSON.stringify(tasks), 365);
 }
 
 function loadTasks() {
-    const data = localStorage.getItem("todo_list");
-    if (data) {
+    const data = getCookie("todo_list");
+    if (data !== "") {
         const tasks = JSON.parse(data);
         tasks.reverse();
         tasks.forEach(task => {
             createTaskElement(task);
         });
     }
+}
+
+function setCookie(cname, cvalue, exdays) {
+    const expireDate = new Date();
+    expireDate.setTime(expireDate.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    let expires = "expires=" + expireDate.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == " ") {
+            c = c.substring(1);
+        }
+
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
 }
